@@ -6,7 +6,7 @@
 class Memoria {
 protected:
     std::string nome;
-    int latencia;
+    int latencia;   // o custo em ciclos
     Memoria* proximoNivel; // Ponteiro para o próximo nível da hierarquia
 
 public:
