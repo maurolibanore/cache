@@ -13,13 +13,12 @@ u64 latencia;
 
 NivelMemoria(const std::string &n, u64 lat) : nome(n), latencia(lat) {}
 
-
 virtual ~NivelMemoria() = default;
 
-virtual std::pair<bool, u64> read(u64 endereco, u64 tempo_atual) = 0;
-virtual std::pair<bool, u64> write(u64 endereco, u64 tempo_atual) = 0; 
+virtual std::pair<bool, u64> ler(u64 endereco, u64 tempo_atual) = 0;
+virtual std::pair<bool, u64> escrever(u64 endereco, u64 tempo_atual) = 0; 
 
 
 
-virtual size_t byteSize() const { return 0; }
+virtual size_t tamanhoEmBytes() const { return 0; }
 };
