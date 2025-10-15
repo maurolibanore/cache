@@ -1,18 +1,25 @@
-#include "memoriaPrincipal.h"
+#include "MemoriaPrincipal.h"
 #include <iostream>
 
 int main() {
-    // Cria um objeto MemoriaPrincipal com nome e latência
-    MemoriaPrincipal ram("RAM", 100);
+    MemoriaPrincipal mp("RAM", 100); // nome + latência em ciclos
 
-    // Realiza uma leitura e uma escrita
-    auto resultadoLeitura = ram.ler(0x1234, 0);
-    auto resultadoEscrita = ram.escrever(0x1234, resultadoLeitura.second);
+    u64 tempo = 0;
 
-    // Mostra o tempo acumulado das operações
-    std::cout << "Tempo após leitura: " << resultadoLeitura.second << " ciclos\n";
-    std::cout << "Tempo após escrita: " << resultadoEscrita.second << " ciclos\n";
+    // Faz algumas leituras e escritas
+    auto res1 = mp.ler(0, tempo);
+    tempo = res1.second;
 
-    // Exibe estatísticas da memória
-    ram.imprimirEstatisticas();
+    auto res2 = mp.escrever(10, tempo);
+    tempo = res2.second;
+
+    auto res3 = mp.ler(20, tempo);
+    tempo = res3.second;
+
+    // Imprime estatísticas
+    mp.imprime_estatisticas();
+
+    std::cout << "Tempo total acumulado: " << tempo << " ciclos\n";
+
+    return 0;
 }
